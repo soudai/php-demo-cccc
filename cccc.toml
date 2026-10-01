@@ -1,0 +1,5 @@
+# Demo quality gate. These are project-specific limits, not universal ratings.
+languages = ["php"]
+max-cognitive = 15
+max-cyclomatic = 10
+pretty = true

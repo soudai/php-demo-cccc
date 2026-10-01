@@ -1,0 +1,38 @@
+{
+  "files": [
+    {
+      "path": "examples/baseline/MoveFinder.php",
+      "cognitive": 54,
+      "cyclomatic": 17,
+      "functions": [
+        {
+          "name": "legalMoves",
+          "kind": "method",
+          "line": 13,
+          "cognitive": 54,
+          "cyclomatic": 17
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "file_count": 1,
+    "function_count": 1,
+    "parse_error_count": 0,
+    "parse_error_file_count": 0,
+    "cognitive": {
+      "sum": 54,
+      "max": 54,
+      "median": 54,
+      "p90": 54,
+      "p95": 54
+    },
+    "cyclomatic": {
+      "sum": 17,
+      "max": 17,
+      "median": 17,
+      "p90": 17,
+      "p95": 17
+    }
+  }
+}

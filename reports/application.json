@@ -1,0 +1,254 @@
+{
+  "files": [
+    {
+      "path": "bin/othello.php",
+      "cognitive": 0,
+      "cyclomatic": 0,
+      "functions": []
+    },
+    {
+      "path": "bootstrap.php",
+      "cognitive": 3,
+      "cyclomatic": 3,
+      "functions": [
+        {
+          "name": "<closure>",
+          "kind": "closure",
+          "line": 5,
+          "cognitive": 3,
+          "cyclomatic": 3
+        }
+      ]
+    },
+    {
+      "path": "src/Board.php",
+      "cognitive": 22,
+      "cyclomatic": 34,
+      "functions": [
+        {
+          "name": "__construct",
+          "kind": "method",
+          "line": 21,
+          "cognitive": 6,
+          "cyclomatic": 6
+        },
+        {
+          "name": "opponent",
+          "kind": "method",
+          "line": 35,
+          "cognitive": 1,
+          "cyclomatic": 3
+        },
+        {
+          "name": "inside",
+          "kind": "method",
+          "line": 44,
+          "cognitive": 1,
+          "cyclomatic": 4
+        },
+        {
+          "name": "parseCoordinate",
+          "kind": "method",
+          "line": 50,
+          "cognitive": 1,
+          "cyclomatic": 2
+        },
+        {
+          "name": "coordinate",
+          "kind": "method",
+          "line": 59,
+          "cognitive": 1,
+          "cyclomatic": 2
+        },
+        {
+          "name": "rows",
+          "kind": "method",
+          "line": 68,
+          "cognitive": 0,
+          "cyclomatic": 1
+        },
+        {
+          "name": "legalMoves",
+          "kind": "method",
+          "line": 74,
+          "cognitive": 3,
+          "cyclomatic": 3
+        },
+        {
+          "name": "flipsAt",
+          "kind": "method",
+          "line": 89,
+          "cognitive": 3,
+          "cyclomatic": 4
+        },
+        {
+          "name": "scanDirection",
+          "kind": "method",
+          "line": 108,
+          "cognitive": 4,
+          "cyclomatic": 5
+        },
+        {
+          "name": "play",
+          "kind": "method",
+          "line": 127,
+          "cognitive": 2,
+          "cyclomatic": 3
+        },
+        {
+          "name": "score",
+          "kind": "method",
+          "line": 142,
+          "cognitive": 0,
+          "cyclomatic": 1
+        }
+      ]
+    },
+    {
+      "path": "src/Computer.php",
+      "cognitive": 6,
+      "cyclomatic": 5,
+      "functions": [
+        {
+          "name": "choose",
+          "kind": "method",
+          "line": 12,
+          "cognitive": 6,
+          "cyclomatic": 5
+        }
+      ]
+    },
+    {
+      "path": "src/Console.php",
+      "cognitive": 27,
+      "cyclomatic": 25,
+      "functions": [
+        {
+          "name": "run",
+          "kind": "method",
+          "line": 11,
+          "cognitive": 5,
+          "cyclomatic": 6
+        },
+        {
+          "name": "playGame",
+          "kind": "method",
+          "line": 31,
+          "cognitive": 7,
+          "cyclomatic": 6
+        },
+        {
+          "name": "applyMove",
+          "kind": "method",
+          "line": 54,
+          "cognitive": 2,
+          "cyclomatic": 3
+        },
+        {
+          "name": "readMove",
+          "kind": "method",
+          "line": 68,
+          "cognitive": 7,
+          "cyclomatic": 5
+        },
+        {
+          "name": "render",
+          "kind": "method",
+          "line": 88,
+          "cognitive": 6,
+          "cyclomatic": 4
+        },
+        {
+          "name": "help",
+          "kind": "method",
+          "line": 105,
+          "cognitive": 0,
+          "cyclomatic": 1
+        }
+      ]
+    },
+    {
+      "path": "src/Game.php",
+      "cognitive": 7,
+      "cyclomatic": 14,
+      "functions": [
+        {
+          "name": "__construct",
+          "kind": "method",
+          "line": 13,
+          "cognitive": 0,
+          "cyclomatic": 1
+        },
+        {
+          "name": "board",
+          "kind": "method",
+          "line": 21,
+          "cognitive": 0,
+          "cyclomatic": 1
+        },
+        {
+          "name": "currentPlayer",
+          "kind": "method",
+          "line": 26,
+          "cognitive": 0,
+          "cyclomatic": 1
+        },
+        {
+          "name": "passedPlayer",
+          "kind": "method",
+          "line": 31,
+          "cognitive": 0,
+          "cyclomatic": 1
+        },
+        {
+          "name": "isOver",
+          "kind": "method",
+          "line": 36,
+          "cognitive": 1,
+          "cyclomatic": 2
+        },
+        {
+          "name": "play",
+          "kind": "method",
+          "line": 42,
+          "cognitive": 2,
+          "cyclomatic": 2
+        },
+        {
+          "name": "skipBlockedPlayer",
+          "kind": "method",
+          "line": 54,
+          "cognitive": 2,
+          "cyclomatic": 3
+        },
+        {
+          "name": "result",
+          "kind": "method",
+          "line": 65,
+          "cognitive": 2,
+          "cyclomatic": 3
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "file_count": 6,
+    "function_count": 27,
+    "parse_error_count": 0,
+    "parse_error_file_count": 0,
+    "cognitive": {
+      "sum": 65,
+      "max": 7,
+      "median": 2,
+      "p90": 6,
+      "p95": 7
+    },
+    "cyclomatic": {
+      "sum": 81,
+      "max": 6,
+      "median": 3,
+      "p90": 6,
+      "p95": 6
+    }
+  }
+}

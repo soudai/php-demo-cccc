@@ -1,0 +1,39 @@
+{
+    "generated_at": "2026-10-01T22:07:28+09:00",
+    "cccc_version": "cccc 1.7.0",
+    "php_version": "8.3.6",
+    "platform": "Linux",
+    "thresholds": {
+        "cognitive": 15,
+        "cyclomatic": 10
+    },
+    "application": {
+        "exit_code": 0,
+        "arguments": [
+            "--config",
+            "cccc.toml",
+            "--pretty",
+            "src",
+            "bin",
+            "bootstrap.php"
+        ]
+    },
+    "baseline": {
+        "exit_code": 1,
+        "arguments": [
+            "--config",
+            "cccc.toml",
+            "--pretty",
+            "examples/baseline"
+        ]
+    },
+    "source_sha256": {
+        "bin/othello.php": "35e4d9d81a4d18de69fa088ab072ea235767d258040946bf0b0334f8e06a15f7",
+        "bootstrap.php": "4b30ad844929d8d27d53f055d1d4b87c167cb33f9999c4d6276ae4650c7ba78a",
+        "src/Board.php": "4d6d4664194aec135ba5a8ef9f98797f7beb9cf70e13fb1c007bb3bb406b7743",
+        "src/Computer.php": "021bce8b46125eaa82a260882bb1cebe3ac65ebb4d393c78fc58c5492ab69639",
+        "src/Console.php": "94aeade9a221357d7489cbb39fad864dc6ef3e399f53c4b87a9eb73a7c6eddb5",
+        "src/Game.php": "bdb29d25349b842a7217ddc8c6fa79d03d0a160ef49268acf138ac00eefba42e",
+        "examples/baseline/MoveFinder.php": "fdecb94d93a7275bf31f32c6d78c049f59ab0a80b297b04e0ea039e4802d701a"
+    }
+}
