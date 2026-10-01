@@ -2,6 +2,11 @@
 
 PHPで遊べるCLIオセロを題材に、[CCCC](https://github.com/moznion/cccc) で認知的複雑度（Cognitive Complexity）と循環的複雑度（Cyclomatic Complexity）を実測するデモです。WSL / Ubuntu向け。ComposerやWebサーバーは不要です。
 
+## 解説ドキュメント
+
+- [CCCCの使い方](docs/cccc-guide.md)：計測コマンド、JSONの読み方、設定と品質ゲート、解析時の注意点。
+- [PHPの複雑度比較](docs/php-complexity-comparison.md)：入れ子とガード節、オセロの実装比較、ヘルパーを含む実測値の評価。
+
 ## WSLで起動
 
 必要環境: PHP **8.2以上**、Bash、curl、tar、sha256sum。PHPがない場合だけ、Ubuntuでインストールします。
