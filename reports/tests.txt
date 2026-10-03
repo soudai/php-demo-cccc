@@ -5,8 +5,11 @@ PASS open runs and edges cannot capture or wrap around
 PASS forced pass retains the playable turn and then ends the game
 PASS game may end with empty cells; a full board can be a draw
 PASS computer prefers corners and rejects positions with no move
+PASS declarative legal moves require an empty origin in each of eight directions
+PASS declarative legal moves reject incomplete brackets and board wrapping
+PASS declarative legal moves preserve long brackets and dense row-major order
 PASS baseline equivalence and stone invariants over 20 seeded complete games
 PASS CLI help, errors, EOF, invalid moves and two-player interaction
 PASS CLI automatic match is deterministic and finishes
 
-10 tests, 9714 assertions, 1220 compared positions: PASS
+13 tests, 12214 assertions, 1220 compared positions: PASS

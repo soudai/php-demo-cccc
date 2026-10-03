@@ -4,11 +4,13 @@ declare(strict_types=1);
 
 require dirname(__DIR__) . '/bootstrap.php';
 require dirname(__DIR__) . '/examples/baseline/MoveFinder.php';
+require dirname(__DIR__) . '/examples/declarative/MoveFinder.php';
 
 use Othello\Board;
 use Othello\Computer;
 use Othello\Game;
 use OthelloDemo\Baseline\MoveFinder;
+use OthelloDemo\Declarative\MoveFinder as DeclarativeMoveFinder;
 
 $tests = 0;
 $assertions = 0;
@@ -149,6 +151,57 @@ try {
         rejects(static fn () => $computer->choose(new Board(array_fill(0, 8, 'BBBBBBBB')), 'W'), LogicException::class);
     });
 
+    test('declarative legal moves require an empty origin in each of eight directions', static function (): void {
+        $directions = [[-1, -1], [0, -1], [1, -1], [-1, 0], [1, 0], [-1, 1], [0, 1], [1, 1]];
+        foreach (['B' => 'W', 'W' => 'B'] as $player => $opponent) {
+            foreach ($directions as [$dx, $dy]) {
+                $rows = array_fill(0, 8, '........');
+                $rows[3 + $dy][3 + $dx] = $opponent;
+                $rows[3 + 2 * $dy][3 + 2 * $dx] = $player;
+                same(['d4'], DeclarativeMoveFinder::legalMoves($rows, $player), "player=$player direction=$dx,$dy");
+                $rows[3][3] = $player;
+                same([], DeclarativeMoveFinder::legalMoves($rows, $player), 'An occupied origin cannot be a legal move.');
+            }
+        }
+    });
+
+    test('declarative legal moves reject incomplete brackets and board wrapping', static function (): void {
+        $cases = [
+            'empty board' => array_fill(0, 8, '........'),
+            'no adjacent opponent' => ['.B......', ...array_fill(0, 7, '........')],
+            'opponent run ends at an empty cell' => ['.WW.....', ...array_fill(0, 7, '........')],
+            'opponent run leaves the right edge' => ['.WWWWWWW', ...array_fill(0, 7, '........')],
+            'opponent run leaves the left edge' => ['WWWWWWW.', ...array_fill(0, 7, '........')],
+            'opponent run leaves the top edge' => ['W.......', '.W......', '........', ...array_fill(0, 5, '........')],
+            'opponent run leaves the bottom edge' => [...array_fill(0, 6, '........'), '......W.', '.......W'],
+            'empty gap before own stone' => ['.W.B....', ...array_fill(0, 7, '........')],
+            'last column does not wrap to next row' => ['......BW', ...array_fill(0, 7, '........')],
+            'first column does not wrap to previous row' => ['........', 'WB......', ...array_fill(0, 6, '........')],
+        ];
+        foreach ($cases as $name => $rows) {
+            same([], DeclarativeMoveFinder::legalMoves($rows, 'B'), $name);
+            $swapped = array_map(static fn (string $row): string => strtr($row, ['B' => 'W', 'W' => 'B']), $rows);
+            same([], DeclarativeMoveFinder::legalMoves($swapped, 'W'), "$name with swapped colors");
+        }
+    });
+
+    test('declarative legal moves preserve long brackets and dense row-major order', static function (): void {
+        $cases = [
+            [['.WWWWWWB', ...array_fill(0, 7, '........')], ['a1']],
+            [['BWWWWWW.', ...array_fill(0, 7, '........')], ['h1']],
+            [['.WBBBBW.', ...array_fill(0, 6, '........'), '.WBBBBW.'], ['a1', 'h1', 'a8', 'h8']],
+            [[
+                'BBBBBBBB', 'BBBBBBBB', 'BBWWWBBB', 'BBW.WBBB',
+                'BBWWWBBB', 'BBBBBBBB', 'BBBBBBBB', 'BBBBBBBB',
+            ], ['d4']],
+        ];
+        foreach ($cases as [$rows, $expected]) {
+            same($expected, DeclarativeMoveFinder::legalMoves($rows, 'B'));
+            $swapped = array_map(static fn (string $row): string => strtr($row, ['B' => 'W', 'W' => 'B']), $rows);
+            same($expected, DeclarativeMoveFinder::legalMoves($swapped, 'W'));
+        }
+    });
+
     test('baseline equivalence and stone invariants over 20 seeded complete games', static function (): void {
         global $positions;
         for ($seed = 1; $seed <= 20; $seed++) {
@@ -159,6 +212,7 @@ try {
                 $board = $game->board();
                 foreach (['B', 'W'] as $player) {
                     same(MoveFinder::legalMoves($board->rows(), $player), $board->legalMoves($player), "seed=$seed turn=$turns player=$player");
+                    same(DeclarativeMoveFinder::legalMoves($board->rows(), $player), $board->legalMoves($player), "declarative seed=$seed turn=$turns player=$player");
                 }
                 $positions++;
                 if ($game->isOver()) {

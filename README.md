@@ -6,6 +6,7 @@ PHPで遊べるCLIオセロを題材に、[CCCC](https://github.com/moznion/cccc
 
 - [CCCCの使い方](docs/cccc-guide.md)：計測コマンド、JSONの読み方、設定と品質ゲート、解析時の注意点。
 - [PHPの複雑度比較](docs/php-complexity-comparison.md)：入れ子とガード節、オセロの実装比較、ヘルパーを含む実測値の評価。
+- [宣言的・関数型スタイル改善レポート](docs/othello-declarative-functional-report.md)：同一仕様での複雑度改善とCCCC実測値の比較。
 
 ## WSLで起動
 
@@ -122,6 +123,7 @@ src/Game.php                   手番、パス、終局、勝敗
 src/Computer.php               決定的なCPU戦略
 src/Console.php                入出力と盤面表示
 examples/baseline/MoveFinder.php 比較用の入れ子の多い実装
+examples/declarative/MoveFinder.php 宣言的・関数型スタイルの比較用実装
 tests/run.php                  外部ライブラリ不要の自動テスト
 scripts/setup.sh               WSL用CCCC導入
 scripts/demo.sh                テスト・対局・計測の一括実行
